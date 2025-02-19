@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: practitioner-service
+  labels:
+    app: practitioner-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: practitioner-service
+  template:
+    metadata:
+      labels:
+        app: practitioner-service
+    spec:
+      containers:
+        - name: practitioner-service
+          image: medical/practitioner-service:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: http://eureka-server:8761/eureka/
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: practitioner-service
+spec:
+  selector:
+    app: practitioner-service
+  ports:
+    - port: 8082
+      targetPort: 8082
+  type: ClusterIP

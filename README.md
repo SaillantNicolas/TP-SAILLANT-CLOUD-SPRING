@@ -34,8 +34,8 @@ medical-office-management/
 ### 1. Cloner le projet
 
 ```bash
-git clone https://github.com/your-username/medical-office-management.git
-cd medical-office-management
+git clone https://github.com/SaillantNicolas/TP-SAILLANT-CLOUD-SPRING.git
+cd TP-SAILLANT-CLOUD-SPRING
 ```
 
 ### 2. Construire tous les services

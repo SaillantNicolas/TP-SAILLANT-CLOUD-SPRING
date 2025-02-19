@@ -122,28 +122,3 @@ Pour tester le circuit breaker et les mécanismes de retry:
 1. Arrêtez un des services (par exemple, le service Patient)
 2. Faites une requête via la passerelle vers ce service
 3. Observez la réponse de fallback
-
-## Déploiement sur Kubernetes
-
-Si vous souhaitez déployer sur Kubernetes:
-
-```bash
-# Appliquer les configurations
-kubectl apply -f eureka-server/deployment.yaml
-kubectl apply -f gateway-service/deployment.yaml
-kubectl apply -f patient-service/deployment.yaml
-kubectl apply -f practitioner-service/deployment.yaml
-
-# Vérifier les déploiements
-kubectl get deployments
-kubectl get services
-```
-
-## Fonctionnalités implémentées
-
-- ✅ Enregistrement et découverte de services avec Eureka
-- ✅ Circuit breaker et retry avec Resilience4j
-- ✅ Passerelle API centralisée
-- ✅ Documentation API avec Swagger
-- ✅ Dockerisation des services
-- ✅ Configurations Kubernetes

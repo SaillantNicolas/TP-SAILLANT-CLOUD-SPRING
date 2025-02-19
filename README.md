@@ -14,8 +14,7 @@ Le projet est composé des microservices suivants:
 
 - Java 11
 - Maven 3.6+
-- Docker (optionnel)
-- Kubernetes (optionnel)
+- Docker
 
 ## Structure du projet
 
@@ -38,29 +37,27 @@ git clone https://github.com/SaillantNicolas/TP-SAILLANT-CLOUD-SPRING.git
 cd TP-SAILLANT-CLOUD-SPRING
 ```
 
-### 2. Construire tous les services
-
-```bash
-mvn clean install -DskipTests
-```
-
-### 3. Démarrer les services dans l'ordre
+### 2. Démarrer les services dans l'ordre
 
 ```bash
 # Démarrer Eureka Server
 cd eureka-server
+mvn clean install -DskipTests
 mvn spring-boot:run
 
 # Démarrer Gateway Service (dans un nouveau terminal)
 cd gateway-service
+mvn clean install -DskipTests
 mvn spring-boot:run
 
 # Démarrer Patient Service (dans un nouveau terminal)
 cd patient-service
+mvn clean install -DskipTests
 mvn spring-boot:run
 
 # Démarrer Practitioner Service (dans un nouveau terminal)
 cd practitioner-service
+mvn clean install -DskipTests
 mvn spring-boot:run
 ```
 
@@ -69,20 +66,22 @@ mvn spring-boot:run
 ### 1. Construire les images Docker
 
 ```bash
-# Construire les JARs
-mvn clean package -DskipTests
 
 # Construire les images Docker
 cd eureka-server
+mvn clean install -DskipTests
 docker build -t medical/eureka-server:latest .
 
 cd ../gateway-service
+mvn clean install -DskipTests
 docker build -t medical/gateway-service:latest .
 
 cd ../patient-service
+mvn clean install -DskipTests
 docker build -t medical/patient-service:latest .
 
 cd ../practitioner-service
+mvn clean install -DskipTests
 docker build -t medical/practitioner-service:latest .
 ```
 
